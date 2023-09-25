@@ -32,6 +32,35 @@ void PrintMartix(int A[][4], int m, int n) {
 		cout << endl;
 	}
 }
+
+void AddMatrix(int A[][3], int B[][3], int C[][3], int m, int n)
+{
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			C[i][j] = A[i][j] + B[i][j];
+		}
+	}
+}
+
+template< typename T, size_t M, size_t N >
+void addmatrix(T(&A)[M][N], T(&B)[M][N], T(&C)[M][N])
+{
+	for (int i = 0; i < M; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			C[i][j] = A[i][j] + B[i][j];
+		}
+	}
+}
+
+int A1[4][3] = { {1,2,3,}, {4,5,6}, {7,8,9}, {10,11,12} };
+int B1[4][3] = { {0,1,2}, {3,4,5}, {6,7,8}, {9,10,11} };
+int C1[4][3] = { 0 };
+int C2[4][3] = { 0 };
+
 int main()
 {
 	int list1[8] = { 5,25,11,26,39,18,120,50 };
@@ -41,6 +70,7 @@ int main()
 	PrintArray(list2, 8);
 	ArrayInsert(list1, 8, 27, 3);
 	PrintArray(list1, 8);
+	addmatrix(A1, B1, C2);
 
 	int arr[3][4] = { {1,2,3,4},{5,6,7,8},{9,10,11,12} };
 	for (int i = 0; i < 3; i++)
