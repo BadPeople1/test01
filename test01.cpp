@@ -56,10 +56,28 @@ void addmatrix(T(&A)[M][N], T(&B)[M][N], T(&C)[M][N])
 	}
 }
 
+template< typename T, size_t M, size_t N, size_t O >
+void multiplymatrix (T(&A)[M][N], T(&B)[N][O], T(&C)[N][O])
+{
+	for (int i = 0; i < M; i++)
+	{
+		for (int j = 0; j < O; j++)
+		{
+			C[i][j] = 0;
+			for (int k = 0; k < N; k++)
+				C[i][j] = C[i][j] + A[i][k] * B[k][j];
+		}
+	}
+}
+
 int A1[4][3] = { {1,2,3,}, {4,5,6}, {7,8,9}, {10,11,12} };
 int B1[4][3] = { {0,1,2}, {3,4,5}, {6,7,8}, {9,10,11} };
 int C1[4][3] = { 0 };
 int C2[4][3] = { 0 };
+
+int A2[3][2] = { {1,2},{3,4},{5,6} };
+int B2[2][4] = { {0,1,1,2},{4,0,-1,3} };
+int C3[3][4] = { 0 };
 
 int main()
 {
@@ -70,7 +88,7 @@ int main()
 	PrintArray(list2, 8);
 	ArrayInsert(list1, 8, 27, 3);
 	PrintArray(list1, 8);
-	addmatrix(A1, B1, C2);
+	addmatrix(A1, B1, C2);;
 
 	int arr[3][4] = { {1,2,3,4},{5,6,7,8},{9,10,11,12} };
 	for (int i = 0; i < 3; i++)
